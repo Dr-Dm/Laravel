@@ -16,12 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view("welcome");
 });
+
 Route::get('/info', static function () {
    return "This is my first Laravel project";
 });
+
 Route::get('/news', static function () {
     return "There will be news here";
 });
+
 Route::get('/news/{id}', static function (int $id): string {
     return "News number {$id}";
 });
