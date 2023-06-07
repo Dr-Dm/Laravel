@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,20 +14,22 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view("welcome");
+Route::get('/', function() {
+    return view('index');
 });
 
-Route::get('/info', static function () {
-   return "This is my first Laravel project";
+
+Route::get('/categories', [CategoryController::class, 'index'])
+    ->name('categories');
+
+Route::group(['prefix' => ''], static function() {
+    Route::get('/categories/{category_id}/news', [NewsController::class, 'index'])
+        ->name('news')->where('category_id', '\d+');
+
+    Route::get('/news/{id}/show', [NewsController::class, 'show'])
+        ->where('id', '\d+')
+        ->name('news.show');
 });
 
-Route::get('/news', static function () {
-    return "There will be news here";
-});
 
-Route::get('/news/{id}', static function (int $id): string {
-    return "News number {$id}";
-});
 
