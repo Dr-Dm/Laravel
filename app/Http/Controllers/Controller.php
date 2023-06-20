@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function getNews(int $category_id, int $id = null): array {
+    public function getNews(int $category_id = null, int $id = null): array {
 
         $news = [];
         $quantityNews = 10;
