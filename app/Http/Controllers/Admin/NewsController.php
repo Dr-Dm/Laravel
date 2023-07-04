@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -15,7 +16,9 @@ class NewsController extends Controller
      */
     public function index(): View
     {
-        return view('admin.news.index');
+        $model = app(News::class);
+
+        return view('admin.news.index', ['newsList' => $model->getNews(true)]);
     }
 
     /**
@@ -31,7 +34,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input('title'));
+        return response()->json($request->only(['title', 'author', 'status', 'description']));
     }
 
     /**

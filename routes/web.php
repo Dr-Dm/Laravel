@@ -33,12 +33,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function() {
 
 
 Route::resource('/categories', CategoryController::class)->only(['index', 'show', 'create', 'store']);
-//
-//Route::get('/categories', [CategoryController::class, 'index'])
-//    ->name('categories');
-//
-//Route::get('/categories/discharge', [CategoryController::class, 'discharge'])
-//    ->name('categories.discharge');
 
 
 Route::group(['prefix' => ''], static function() {
@@ -49,6 +43,5 @@ Route::group(['prefix' => ''], static function() {
         ->where('id', '\d+')
         ->name('news.show');
 });
-
 
 

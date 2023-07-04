@@ -13,8 +13,8 @@
             </div>
 
             <div class="form-group">
-                <label for="author">Автор</label>
-                <input type="text" name="author" id="author" class="form-control" value="{{ old('author') }}">
+                <label for="phone">Телефон</label>
+                <input type="tel" name="phone" id="phone" class="form-control" value="{{ old('phone') }}">
             </div>
 
             <div class="form-group">
