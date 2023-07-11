@@ -7,6 +7,14 @@
     <form method="post" action="{{ route('admin.news.store') }}">
         @csrf
         <div class="form-group">
+            <label for="categories">Категории</label>
+            <select class="form-control" multiple name="categories[]" id="categories">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}"> {{ $category->title }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
             <label for="title">Заголовок</label>
             <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}">
         </div>
@@ -18,14 +26,14 @@
             <label for="image">Изображение</label>
             <input type="file" name="image" id="image" class="form-control">
         </div>
-        <div class="form-group">
-            <label for="status">Статус</label>
-            <select name="status" id="status" class="form-control">
-                <option @if(old('status') === 'DRAFT') selected @endif>DRAFT</option>
-                <option @if(old('status') === 'ACTIVE') selected @endif>ACTIVE</option>
-                <option @if(old('status') === 'BLOCKED') selected @endif>BLOCKED</option>
-            </select>
-        </div>
+{{--        <div class="form-group">--}}
+{{--            <label for="status">Статус</label>--}}
+{{--            <select name="status" id="status" class="form-control">--}}
+{{--                <option @if(old('status') === 'DRAFT') selected @endif>DRAFT</option>--}}
+{{--                <option @if(old('status') === 'ACTIVE') selected @endif>ACTIVE</option>--}}
+{{--                <option @if(old('status') === 'BLOCKED') selected @endif>BLOCKED</option>--}}
+{{--            </select>--}}
+{{--        </div>--}}
 
         <div class="form-group">
             <label for="description">Описание</label>

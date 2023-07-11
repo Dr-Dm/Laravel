@@ -13,7 +13,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>#ID</th>
-{{--                <th>Categories</th>--}}
+                <th>Categories</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Date created</th>
@@ -22,7 +22,7 @@
             @foreach($newsList as $news)
                 <tr>
                     <th>#{{ $news->id }}</th>
-{{--                    <th>#{{ $news->categories }}</th>--}}
+                    <th>#{{ $news->categories }}</th>
                     <th>{{ $news->title }}</th>
                     <th>{{ $news->author }}</th>
                     <th>{{ $news->created_at }}</th>

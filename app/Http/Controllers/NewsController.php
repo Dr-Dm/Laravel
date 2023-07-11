@@ -5,20 +5,22 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Queries\NewsQueryBuilder;
+use App\Queries\QueryBuilder;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index(int $category_id) {
-        $model = app(News::class);
-
-        return view('news.index', ['news' => $model->getNews($category_id)]);
+    public function index(NewsQueryBuilder $newsQueryBuilder)
+    {
+        return view('news.index', ['news' => $newsQueryBuilder->getLastNews()]);
     }
 
-    public function show(int $id) {
+    public function show(News $news)
+    {
         $model = app(News::class);
 
-        return view('news.show', ['n' => $model->getNewsById($id)]);
+        return view('news.show', ['n' => $news]);
     }
 
 }

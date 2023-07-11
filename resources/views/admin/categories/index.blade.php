@@ -8,4 +8,25 @@
             </div>
         </div>
     </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>#ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date created</th>
+                <th>Actions</th>
+            </tr>
+            @foreach($categoryList as $category)
+                <tr>
+                    <th>#{{ $category->id }}</th>
+                    <th>{{ $category->title }}</th>
+                    <th>{{ $category->description }}</th>
+                    <th>{{ $category->created_at }}</th>
+                    <td><a href="#">Edit</a>&nbsp; <a href="javascript:;" style="color:red">Delete</a> </td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
 @endsection

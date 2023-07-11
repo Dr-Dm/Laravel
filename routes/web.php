@@ -39,8 +39,8 @@ Route::group(['prefix' => ''], static function() {
     Route::get('/categories/{category_id}/news', [NewsController::class, 'index'])
         ->name('news')->where('category_id', '\d+');
 
-    Route::get('/news/{id}/show', [NewsController::class, 'show'])
-        ->where('id', '\d+')
+    Route::get('/news/{news}/show', [NewsController::class, 'show'])
+        ->where('news', '\d+')
         ->name('news.show');
 });
 

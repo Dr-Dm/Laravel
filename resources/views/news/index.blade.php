@@ -13,7 +13,7 @@
                     <p class="card-text">{{ $n->description }}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ route('news.show', ['id' => $n->id]) }}">Читать полностью...</a>
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ route('news.show', ['news' => $n->id]) }}">Читать полностью...</a>
                         </div>
                         <small class="text-body-secondary">{{ $n->author }}  ({{ $n->created_at }})</small>
                     </div>

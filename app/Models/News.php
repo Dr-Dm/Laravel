@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-use PhpParser\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class News extends Model
@@ -14,25 +14,25 @@ class News extends Model
 
     protected $table = 'news';
 
-//    public function getNews(bool $isJoin = false)
-//    {
-//        if ($isJoin === true) {
-//            return DB::table($this->table)
-//                ->select('news.*', 'categories.title as categoryTitle')
-//                ->join('category_has_news', 'category_has_news.news_id', '=', 'news.id')
-//                ->join('categories', 'category_has_news.category_id', '=', 'categories.id')
-//                ->get();
-//        }
-//        return DB::table($this->table)->get();
-//    }
+    protected $fillable = [
+      'title',
+      'author',
+      'status',
+      'description',
+    ];
 
-    public function getNews()
+    /* Relations */
+
+    public function categories(): BelongsToMany
     {
-        return DB::table($this->table)->get();
+        return $this->belongsToMany(Category::class, 'category_has_news',
+            'news_id', 'category_id');
     }
 
-    public function getNewsById(int $id): mixed
+    /* Scopes`s */
+
+    public function scopeLastNews(Builder $query): void
     {
-        return DB::table($this->table)->find($id);
+        $query->where('id', '>', '42');
     }
 }
