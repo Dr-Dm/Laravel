@@ -9,6 +9,7 @@ use App\Models\News;
 use App\Queries\CategoriesQueryBuilder;
 use App\Queries\NewsQueryBuilder;
 use App\Queries\QueryBuilder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -65,7 +66,7 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(News $news)
     {
         //
     }
@@ -73,23 +74,36 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(News $news)
     {
-        //
+        return \view('admin.news.edit', [
+            'news' => $news,
+            'categories' => $this->categoriesQueryBuilder->getAll()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, News $news): RedirectResponse
     {
-        //
+        $categories = $request->input('categories');
+
+        $news = $news->fill($request->only('title', 'author', 'description'));
+        if ($news->save()) {
+            $news->categories()->sync($categories);
+
+            return \redirect()->route('admin.news.index')->with('success', 'News has been update');
+        }
+
+        return \back()->with('error', ' News has not been update');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(News $news)
     {
         //
     }

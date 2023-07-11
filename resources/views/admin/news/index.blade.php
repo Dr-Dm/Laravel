@@ -22,11 +22,11 @@
             @foreach($newsList as $news)
                 <tr>
                     <th>#{{ $news->id }}</th>
-                    <th>#{{ $news->categories }}</th>
+                    <th>#{{ $news->categories->map(fn($item) => $item->id) }}</th>
                     <th>{{ $news->title }}</th>
                     <th>{{ $news->author }}</th>
                     <th>{{ $news->created_at }}</th>
-                    <td><a href="#">Edit</a>&nbsp; <a href="javascript:;" style="color:red">Delete</a> </td>
+                    <td><a href="{{ route('admin.news.edit', ['news' => $news]) }}">Edit</a>&nbsp; <a href="javascript:;" style="color:red">Delete</a> </td>
                 </tr>
             @endforeach
         </table>
