@@ -3,22 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Queries\CategoriesQueryBuilder;
+use App\Queries\NewsQueryBuilder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    public function index(): View
+    public function index(CategoriesQueryBuilder $categoriesQueryBuilder): View
     {
-        $model = app(Category::class);
-        return \view('categories.index', ['newsCategories' => $model->getCategories()]);
+        //$model = app(Category::class);
+        return \view('categories.index', ['newsCategories' => $categoriesQueryBuilder->getAll()]);
     }
 
-    public function show(int $category_id, int $id)
+    public function show(NewsQueryBuilder $newsQueryBuilder)
     {
-        $model = app(Category::class);
-        return $model->getCategoriesById($category_id, $id);
+
+        return view('news.index', ['news' => $newsQueryBuilder->getLastNews()]);
     }
 
     public function create(): View
