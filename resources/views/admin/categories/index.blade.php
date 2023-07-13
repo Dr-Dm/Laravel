@@ -24,7 +24,7 @@
                     <th>{{ $category->title }}</th>
                     <th>{{ $category->description }}</th>
                     <th>{{ $category->created_at }}</th>
-                    <td><a href="#">Edit</a>&nbsp; <a href="javascript:;" style="color:red">Delete</a> </td>
+                    <td><a href="{{ route('admin.categories.edit', ['category' => $category]) }}">Edit</a>&nbsp; <a href="javascript:;" style="color:red">Delete</a> </td>
                 </tr>
             @endforeach
         </table>
