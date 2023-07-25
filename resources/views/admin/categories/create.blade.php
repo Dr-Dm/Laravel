@@ -4,16 +4,8 @@
         <h1 class="h2">Добавить новость</h1>
     </div>
 
-    <form method="post" action="{{ route('admin.news.store') }}">
+    <form method="post" action="{{ route('admin.categories.store') }}">
         @csrf
-        <div class="form-group">
-            <label for="categories">Категории</label>
-            <select class="form-control" multiple name="categories[]" id="categories">
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}"> {{ $category->title }}</option>
-                @endforeach
-            </select>
-        </div>
         <div class="form-group">
             <label for="title">Заголовок</label>
             <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}">
