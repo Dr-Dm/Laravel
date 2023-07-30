@@ -4,6 +4,7 @@
 <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard Template · Bootstrap v5.3</title>
 
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">

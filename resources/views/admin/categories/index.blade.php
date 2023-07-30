@@ -4,12 +4,13 @@
         <h1 class="h2">Category</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a href="{{ route('admin.categories.create') }}}" type="button" class="btn btn-sm btn-outline-secondary">Add category</a>
+                <a href="{{ route('admin.categories.create') }}" type="button" class="btn btn-sm btn-outline-secondary">Add category</a>
             </div>
         </div>
     </div>
 
     <div class="table-responsive">
+        @include('admin.message')
         <table class="table table-bordered">
             <tr>
                 <th>#ID</th>

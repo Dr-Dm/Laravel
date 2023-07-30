@@ -11,14 +11,6 @@
             <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}">
         </div>
         <div class="form-group">
-            <label for="author">Автор</label>
-            <input type="text" name="author" id="author" class="form-control" value="{{ old('author') }}">
-        </div>
-        <div class="form-group">
-            <label for="image">Изображение</label>
-            <input type="file" name="image" id="image" class="form-control">
-        </div>
-        <div class="form-group">
             <label for="description">Описание</label>
             <input type="text" name="description" id="description" class="form-control" value="{{ old('description') }}">
         </div>

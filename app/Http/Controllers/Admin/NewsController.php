@@ -11,8 +11,10 @@ use App\Models\News;
 use App\Queries\CategoriesQueryBuilder;
 use App\Queries\NewsQueryBuilder;
 use App\Queries\QueryBuilder;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class NewsController extends Controller
@@ -55,10 +57,10 @@ class NewsController extends Controller
         if ($news) {
                 $news->categories()->attach($request->getCategories());
 
-                return \redirect()->route('admin.news.index')->with('success', 'News has been created');
+                return \redirect()->route('admin.news.index')->with('success', __('News has been created'));
         }
 
-        return \back()->with('error', ' News has not been create');
+        return \back()->with('error', __('News has not been created'));
     }
 
     /**
@@ -90,18 +92,26 @@ class NewsController extends Controller
         if ($news->save()) {
             $news->categories()->sync($request->getCategories());
 
-            return \redirect()->route('admin.news.index')->with('success', 'News has been update');
+            return \redirect()->route('admin.news.index')->with('success', __('News has been updated'));
         }
 
-        return \back()->with('error', ' News has not been update');
+        return \back()->with('error', __('News has not been updated'));
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $news)
+    public function destroy(News $news): JsonResponse
     {
-        //
+        try {
+            $news->delete();
+
+            return response()->json('ok');
+        } catch (\Throwable $exception) {
+            Log::error($exception->getMessage(), $exception->getTrace());
+
+            return response()->json('error', 400);
+        }
     }
 }

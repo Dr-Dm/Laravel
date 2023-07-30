@@ -4,6 +4,13 @@
         <h1 class="h2">Добавить новость</h1>
     </div>
 
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <x-alert type="danger" :message="$error"></x-alert>
+        @endforeach
+    @endif
+
+
     <form method="post" action="{{ route('admin.news.store') }}">
         @csrf
         <div class="form-group">
@@ -13,14 +20,17 @@
                     <option value="{{ $category->id }}"> {{ $category->title }}</option>
                 @endforeach
             </select>
+            @error('categories') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
         <div class="form-group">
             <label for="title">Заголовок</label>
             <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}">
+            @error('title') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
         <div class="form-group">
             <label for="author">Автор</label>
             <input type="text" name="author" id="author" class="form-control" value="{{ old('author') }}">
+            @error('author') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
         <div class="form-group">
             <label for="image">Изображение</label>
@@ -38,6 +48,8 @@
         <div class="form-group">
             <label for="description">Описание</label>
             <input type="text" name="description" id="description" class="form-control" value="{{ old('description') }}">
+            @error('description') <x-alert type="danger" :message="$message"></x-alert>@enderror
+        </div>
         </div>
 
         <br />

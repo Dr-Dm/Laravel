@@ -1,0 +1,10 @@
+{
+    "News has been created": "Новость создана",
+    "News has not been create": "Новость НЕ создана",
+    "News has been updated": "Новость была обновлена",
+    "News has not been updated": "Новость НЕ была обновлена",
+    "Category has been update": "Категория обновлена",
+    "Category has not been update": "Не удалось обновить категорию",
+    "Category has been created": "Категория создана",
+    "Category has not been create": "Не удалось создать категорию"
+}

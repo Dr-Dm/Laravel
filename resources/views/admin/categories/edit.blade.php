@@ -10,10 +10,12 @@
         <div class="form-group">
             <label for="title">Заголовок</label>
             <input type="text" name="title" id="title" class="form-control" value="{{ $category->title }}">
+            @error('title') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
         <div class="form-group">
             <label for="description">Описание</label>
             <input type="text" name="description" id="description" class="form-control" value="{{ $category->description }}">
+            @error('description') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
 
         <br />

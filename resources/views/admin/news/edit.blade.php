@@ -14,14 +14,17 @@
                     <option @if(in_array($category->id, $news->categories->pluck('id')->toArray())) selected @endif value="{{ $category->id }}"> {{ $category->title }}</option>
                 @endforeach
             </select>
+            @error('categories') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
         <div class="form-group">
             <label for="title">Заголовок</label>
             <input type="text" name="title" id="title" class="form-control" value="{{ $news->title }}">
+            @error('title') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
         <div class="form-group">
             <label for="author">Автор</label>
             <input type="text" name="author" id="author" class="form-control" value="{{ $news->author }}">
+            @error('author') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
         <div class="form-group">
             <label for="image">Изображение</label>
@@ -39,6 +42,7 @@
         <div class="form-group">
             <label for="description">Описание</label>
             <input type="text" name="description" id="description" class="form-control" value="{{ $news->description }}">
+            @error('description') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
 
         <br />

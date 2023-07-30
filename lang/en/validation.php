@@ -29,7 +29,7 @@ return [
         'array' => 'The :attribute field must have between :min and :max items.',
         'file' => 'The :attribute field must be between :min and :max kilobytes.',
         'numeric' => 'The :attribute field must be between :min and :max.',
-        'string' => 'Поле :attribute field must be between :min and :max characters.',
+        'string' => 'The :attribute field must be between :min and :max characters.',
     ],
     'boolean' => 'The :attribute field must be true or false.',
     'confirmed' => 'The :attribute field confirmation does not match.',
@@ -100,7 +100,7 @@ return [
         'array' => 'The :attribute field must have at least :min items.',
         'file' => 'The :attribute field must be at least :min kilobytes.',
         'numeric' => 'The :attribute field must be at least :min.',
-        'string' => 'Поле :attribute должно быть минимум из :min символов.',
+        'string' => 'The :attribute field must be at least :min characters.',
     ],
     'min_digits' => 'The :attribute field must have at least :min digits.',
     'missing' => 'The :attribute field must be missing.',
@@ -125,7 +125,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute field format is invalid.',
-    'required' => 'Поле :attribute заполнено неверно.',
+    'required' => 'The :attribute field is required.',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_if_accepted' => 'The :attribute field is required when :other is accepted.',
@@ -179,11 +179,6 @@ return [
     |
     */
 
-    'attributes' => [
-        'title' => 'заголовок',
-        'author' => 'автор',
-        'description' => 'описание',
-        'categories' => 'категории'
-    ],
+    'attributes' => [],
 
 ];

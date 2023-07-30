@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Categories\Store;
+use App\Http\Requests\Categories\Update;
 use App\Models\Category;
 use App\Queries\CategoriesQueryBuilder;
 use Illuminate\Http\Request;
@@ -30,15 +32,16 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Store $request)
     {
-        $category = $request->only('title', 'description');
-        $category = Category::create($category);
+        $validated = $request->validated();
+
+        $category = Category::create($validated);
         if ($category !== false) {
             return \redirect()->route('admin.categories.index')->with('success', 'Category has been created');
         }
 
-        return \back()->with('error', ' Category has not been create');
+        return \back()->with('error', 'Category has not been create');
     }
 
     /**
@@ -60,15 +63,15 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Update $request, Category $category)
     {
-        $category = $category->fill($request->only('title', 'description'));
+        $category = $category->fill($request->validated());
         if ($category->save()) {
 
             return \redirect()->route('admin.categories.index')->with('success', 'Category has been update');
         }
 
-        return \back()->with('error', ' Category has not been update');
+        return \back()->with('error', 'Category has not been update');
     }
 
     /**
