@@ -6,5 +6,18 @@
     "Category has been update": "Категория обновлена",
     "Category has not been update": "Не удалось обновить категорию",
     "Category has been created": "Категория создана",
-    "Category has not been create": "Не удалось создать категорию"
+    "Category has not been create": "Не удалось создать категорию",
+    "Register": "Регистрация",
+    "Name": "Имя",
+    "Email Address": "Адрес электронной почты",
+    "Password": "Пароль",
+    "Confirm Password": "Повторить пароль",
+    "Remember Me": "Запомнить меня",
+    "Login": "Вход",
+    "Forgot Your Password?": "Забыли Ваш Пароль?",
+    "Logout": "Выйти",
+    "You are logged in!": "Вы авторизовались",
+    "Dashboard": "Объявление",
+    "Account": "Панель управления"
+
 }
