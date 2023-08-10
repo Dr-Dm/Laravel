@@ -211,6 +211,8 @@
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
 <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+@stack('js')
 </body>
 </html>

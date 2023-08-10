@@ -41,7 +41,7 @@
 
         <div class="form-group">
             <label for="description">Описание</label>
-            <input type="text" name="description" id="description" class="form-control" value="{{ $news->description }}">
+            <textarea type="text" name="description" id="description" class="form-control">{!! $news->description !!}</textarea>
             @error('description') <x-alert type="danger" :message="$message"></x-alert>@enderror
         </div>
 
@@ -49,3 +49,12 @@
         <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 @endsection
+@push('js')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#description' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+@endpush
