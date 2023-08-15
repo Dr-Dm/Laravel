@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Services\Contracts\Parser;
+use Illuminate\Support\Facades\Storage;
 use Orchestra\Parser\Xml\Facade;
 
 class ParserService implements Parser
@@ -40,7 +41,9 @@ class ParserService implements Parser
             ],
         ]);
 
-        dd($data);
-        //something else
+        $explode = explode("/", $this->link);
+        $fileName = end($explode);
+
+        Storage::append('parse/' . $fileName . ".txt", json_encode($data));
     }
 }

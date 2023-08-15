@@ -4,7 +4,7 @@
         <h1 class="h2">Редактировать новость</h1>
     </div>
 
-    <form method="post" action="{{ route('admin.news.update', ['news' => $news]) }}">
+    <form method="post" action="{{ route('admin.news.update', ['news' => $news]) }}" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div class="form-group">
@@ -28,6 +28,7 @@
         </div>
         <div class="form-group">
             <label for="image">Изображение</label>
+            <img src="{{ Storage::disk('public')->url($news->image) }}">
             <input type="file" name="image" id="image" class="form-control">
         </div>
         {{--        <div class="form-group">--}}

@@ -12,7 +12,7 @@ class UploadService implements Upload
 
     public function create(UploadedFile $uploadedFile): string
     {
-        $path = $uploadedFile->storeAs('/news_images/', $uploadedFile->hashName(), 'public');
+        $path = $uploadedFile->storeAs('news_images', $uploadedFile->hashName(), 'public');
         if ($path === false) {
             throw new \Exception("File not upload");
         }
